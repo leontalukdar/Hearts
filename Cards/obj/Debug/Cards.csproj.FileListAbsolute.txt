@@ -13,3 +13,6 @@ G:\Visual Studio Project\Hearts\Cards\Cards\bin\Debug\Cards.pdb
 G:\Visual Studio Project\Copy\Cards\Cards\bin\Debug\Cards.exe.config
 G:\Visual Studio Project\Copy\Cards\Cards\obj\Debug\Cards.exe
 G:\Visual Studio Project\Copy\Cards\Cards\obj\Debug\Cards.pdb
+G:\Visual Studio Project\Copy\Cards\Cards\bin\Debug\Cards.exe
+G:\Visual Studio Project\Copy\Cards\Cards\bin\Debug\Cards.pdb
+G:\Visual Studio Project\Copy\Cards\Cards\obj\Debug\Cards.csprojResolveAssemblyReference.cache

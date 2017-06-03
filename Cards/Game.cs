@@ -80,7 +80,10 @@ namespace Cards
                     startFromPlayer = winner % 4;
                     players[winner].SetWinningHand(playingTable);
                     Console.WriteLine("\n\nCards on Table :");
-                    Console.WriteLine(playingTable);
+                    foreach(Card cardOnTable in playingTable)
+                    {
+                        Console.WriteLine(cardOnTable);
+                    }
                     Console.WriteLine("\nPot Winner : {0}",players[winner].name);
                 }
                 //TODO: Update Score of Each Player
@@ -93,7 +96,7 @@ namespace Cards
                     Console.WriteLine("\n\t\t\t\tGAME OVER");
                     Console.WriteLine("\n\t\t\t\tWinner : {0}",players[gameWinner].name);
                     Console.WriteLine("\n\t\t\t\tScore : {0}",playerScores[gameWinner]);
-                    break;
+                    gameOver = true;
                 }
                 roundCount++;
             }
