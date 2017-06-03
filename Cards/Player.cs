@@ -104,6 +104,7 @@ namespace Cards
                         {
                             Console.WriteLine("Hearts has not been broken yet.");
                             isValidCardPlayed = false;
+                            player.hand.PushCard(card);
                         }
                         else
                         {
@@ -134,18 +135,23 @@ namespace Cards
                 }
                 else
                 {
-                    if (card.suit == CardInfo.GetSuit("Hearts"))
+                    if(temp.suit == CardInfo.GetSuit("Clubs")&&temp.number==CardInfo.GetNumber("2"))
                     {
-                        if (Game.heartsBreak)
-                            isValidCardPlayed = true;
-                        else
+                        if(card.suit == CardInfo.GetSuit("Spades") && card.number == CardInfo.GetNumber("Queen"))
                         {
+                            Console.WriteLine("Spades of Queen can not be played at first turn");
+                            isValidCardPlayed = false;
+                            player.hand.PushCard(card);
+                        }
+                        else if (card.suit == CardInfo.GetSuit("Hearts"))
+                        {  
                             if (player.hand.Contains(CardInfo.GetSuit("Clubs"))
                                 || player.hand.Contains(CardInfo.GetSuit("Spades"))
                                 || player.hand.Contains(CardInfo.GetSuit("Diamonds")))
                             {
-                                Console.WriteLine("Hearts has not been broken yet.");
+                                Console.WriteLine("Hearts can not be played at first turn.");
                                 isValidCardPlayed = false;
+                                player.hand.PushCard(card);
                             }
                             else
                             {
@@ -153,9 +159,15 @@ namespace Cards
                                 Game.heartsBreak = true;
                             }
                         }
+                        else
+                            isValidCardPlayed = true;
                     }
                     else
+                    {
                         isValidCardPlayed = true;
+                        if(card.suit == CardInfo.GetSuit("Hearts"))
+                            Game.heartsBreak = true;
+                    }
                 }
             }
         }
@@ -224,7 +236,6 @@ namespace Cards
             {
                 isValidCardSelected = false;
                 Console.WriteLine("Please select an existing card");
-                return;
             }
             else
                 isValidCardSelected = true;
@@ -278,13 +289,15 @@ namespace Cards
 
         public int GetScore()
         {
+            bool flag = false;
             if(Contains(CardInfo.GetSuit("Spades"),CardInfo.GetNumber("Queen")))
             {
-                score -= 13;
+                score += 13;
             }
             if(Contains(CardInfo.GetSuit("Diamonds"), CardInfo.GetNumber("Jack")))
             {
-                score += 10;
+                score -= 10;
+                flag = true;
             }
             foreach(Card card in winningHandCards)
             {

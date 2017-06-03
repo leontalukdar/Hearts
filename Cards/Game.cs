@@ -50,7 +50,11 @@ namespace Cards
                     ChangeFront();
                 }
 
-
+                //Set First Player
+                for(int i=0;i<4;i++)
+                {
+                    players[i].SetFirstPlayer();
+                }
                 int startFromPlayer=0;
                 for (int i=0;i<4;i++)
                 {
@@ -113,7 +117,6 @@ namespace Cards
                 j++;
                 j %= 4;
                 players[j].AssignHand(new Hand(cardSegments[i]),roundNumber);
-                players[j].SetFirstPlayer();
             }
         }
 
